@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -27,12 +28,13 @@ public class UserController {
     }
 
     @RequestMapping("/user/login")
-    public void login(HttpServletResponse response, String username, String password) throws IOException {
+    public void login(HttpServletResponse response, HttpSession session, String username, String password) throws IOException {
         User u = userService.selectByUsernameAndPassword(username,password);
         if(u==null){
             response.sendRedirect("/index");
         }
-        response.sendRedirect("/websocket");
+        //session.setAttribute("username",username);
+        response.sendRedirect("/socket");
 
     }
 
