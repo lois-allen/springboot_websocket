@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot_websocket.mapper.UserMapper">
+    <insert id="insert">
+        insert into w_user values(#{id},#{username},#{password})
+    </insert>
+
+    <delete id="deleteById">
+        delete from w_user where id = #{id}
+    </delete>
+
+    <update id="update">
+        update w_user set username = #{username}, password = #{passwors} where id = #{id}
+    </update>
+
+    <select id="selectById" resultType="User">
+        selete * from w_user where id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="User">
+        selete * from w_user
+    </select>
+
+    <select id="selectByName" resultType="User">
+        selete * from w_user where username = #{username}
+    </select>
+
+    <select id="selectByNameAndPassword" resultType="User">
+        selete * from w_user where username = #{username} and password = #{password}
+    </select>
+</mapper>

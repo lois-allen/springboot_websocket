@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>账号注册</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/bootstrap.js"></script>
+    <style>
+        .banner{
+            text-align: center;
+            padding: 24px 0px 24px 0px;
+            background-color: #e3e3e3;
+            font-size: 36px;
+            height: 100px;
+        }
+        .loginForm {
+            /*边框高度*/
+            height: 350px;
+            /*边框宽度*/
+            width: 500px;
+            /*边框颜色*/
+            border: #4d4d4d solid 1px;
+            /*边框圆角*/
+            border-radius: 4px;
+            /*阴影 水平方向，竖直方向，模糊距离*/
+            box-shadow: 5px 5px 5px #4d4d4d;
+            /*上边界距离*/
+            margin-top:100px;
+            /*左边界距离：自动*/
+            margin-left: auto;
+            /*右边界距离：自动*/
+            margin-right: auto;
+            /*用户名、密码间距*/
+            padding: 20px 40px;
+        }
+
+        /*将用户登录置于中间*/
+        .loginForm h2 {
+            text-align: center;
+        }
+
+        /*修改button属性*/
+        .button {
+            text-align: center;
+            vertical-align: middle;
+            margin-top: 30px;
+        }
+        .btn-right{
+            margin-left: 60px;
+        }
+        .login-register{
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="banner">欢迎使用随心聊天室</div>
+<div class="loginForm">
+    <h2>用户注册</h2>
+    <form action="/user/register" method="post">
+        <div class="form-group">
+            <label for="exampleInputEmail1">用户名</label>
+            <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="请输入用户名">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">密码</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码">
+        </div>
+
+        <div class="button">
+            <input type="submit" class="btn btn-primary" value="注 册"/>
+            <input type="reset" class="btn btn-primary btn-right" value="重 置"/>
+        </div>
+    </form>
+    <div class="login-register"><a href="index">已有账号，去登录......</a></div>
+</div>
+</body>
+</html>
