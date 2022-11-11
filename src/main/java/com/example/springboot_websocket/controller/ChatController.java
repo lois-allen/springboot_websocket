@@ -20,15 +20,11 @@ import java.util.concurrent.ConcurrentHashMap;
  * websocket类
  * @ServerEndpoint: socket链接地址
  */
-//@ServerEndpoint("/comeToAll/{username}")
+@ServerEndpoint("/comeToAll/{username}")
 @Controller
 public class ChatController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-
-
-
 
     /**
      * 在线人数
@@ -51,7 +47,7 @@ public class ChatController {
     /**
      *   进入聊天室 --> 项目中读取用户信息获取用户名
      */
-    @RequestMapping("/comeToAll")
+    @RequestMapping("comeToAll")
     public String webSocket(HttpServletRequest request,Model model) {
 
 //        //定义随机时间戳名称
@@ -70,6 +66,7 @@ public class ChatController {
         HttpSession session = request.getSession(false);
         String path="ws://30.238.98.87:8080/comeToAll/";
         session.setAttribute("path",path);
+        String username = (String)session.getAttribute("username");
         return "toAll";
 
     }
@@ -81,6 +78,7 @@ public class ChatController {
      *
      * @param session
      */
+
     @OnOpen
     public void onOpen(@PathParam("username") String username, Session session) {
         onlineNumber++;
@@ -138,7 +136,8 @@ public class ChatController {
         //所有在线用户中去除下线用户
         clients.remove(username);
         try {
-            //messageType 1代表上线 2代表下线 3代表在线名单  4代表普通消息
+            //messageType 1代表上线
+            // 代表下线 3代表在线名单  4代表普通消息
             Map<String, Object> map1 = new HashMap();
             map1.put("messageType", 2);
             //所有在线用户

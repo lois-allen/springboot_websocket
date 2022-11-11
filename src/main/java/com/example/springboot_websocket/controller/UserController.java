@@ -33,8 +33,8 @@ public class UserController {
         if(u==null){
             response.sendRedirect("/index");
         }
-        //session.setAttribute("username",username);
-        response.sendRedirect("/socket");
+        session.setAttribute("username",username);
+        response.sendRedirect("/comeToAll");
 
     }
 
